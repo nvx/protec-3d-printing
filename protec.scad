@@ -90,7 +90,7 @@ module edge_chamfer(
     cube_width=height*sin(angle);
     translate([center?-length/2:0,key_width/2,key_height/2-height])
         rotate([angle,0,0])
-            cube(size=[length,cube_width,cube_height]);
+            cube(size=[length,cube_width+extra,cube_height]);
 }
 
 module face_chamfer(
@@ -104,7 +104,7 @@ module face_chamfer(
     cube_width=depth*sin(angle);
     translate([depth,key_width/2,-length/2])
         rotate([0,0,90+angle])
-            cube(size=[cube_width,cube_height,length]);
+            cube(size=[cube_width+extra,cube_height,length]);
 
     // +z rounding of tip
     translate([-extra,-key_width/2,key_height/2-radius+extra]) {
