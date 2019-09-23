@@ -21,10 +21,12 @@ The easiest way to use this is to create a new `.scad` file that uses the `prote
 ```scad
 use <protec.scad>
 
- key([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],dss_dimples=[11],dc_dimple=true,label="Fig. 11");
+key([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],dss_dimples=[11],dc_dimple=true,label="Fig. 11");
 ```
 
-The `tip_cuts` list indicates which sections of the tips should have warding cut out and ranges from 0 to 6
+The `tip_cuts` list indicates which sections of the tips should have warding cut out and ranges from 0 to 6.
+Alternative the `tip_cut_all` flag can be set to true to generate a modified tip that should work in most if not all
+locks.
 
 The `dss_dimples` list indicates what positions dimples for the Disc Steering System should be at, normally 9 or 11
 matching how many cuts your key has. These are usually for cam locks and pad locks.
@@ -36,7 +38,7 @@ The `dc_dimple` flag controls if the Disc Controller dimple should be cut out. T
 This library could be adapted for PROTEC 2 fairly easily, although I suspect an appropriately sized  metal ball bearing
 retained with a separately printed plug would be required for best results.
 
-If anyone experiments with this or wants to send me a PROTEC 2 core to play with I'd love to hear frmo you. 
+If anyone experiments with this or wants to send me a PROTEC 2 core to play with I'd love to hear from you.
 
 ## References
 
