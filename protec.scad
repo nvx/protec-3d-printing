@@ -19,6 +19,8 @@ cut_angle_0=25;
 cut_angle_1=cut_angle_0+15;
 cut_angle_2=cut_angle_1+15;
 
+handlew = 1.2;
+
 // distance from +-z extreme of key to end of chamfer
 uncut_chamfer_diagonal_width=4.25; // Length between the diagonally opposing parallel chamfers
 key_side_height_flat=sqrt(pow(uncut_chamfer_diagonal_width/cos(cut_angle_0),2)-pow(key_width,2));
@@ -215,31 +217,61 @@ module prism(l, w, h) {
     );
 }
 
-module handle(label="") {
+module handle() {
     ramp_length=4;
     diagonal_mirror()
         translate([key_length-ramp_length,0,key_height/2])
             rotate([0,90,270])
                 prism(key_height,ramp_length,key_width/2);
     
-    height=key_height+5;
-    length=12;
-    keyring_rad = 2.3;
-    translate([key_length,-key_width/2,-key_height/2]) {
-        difference() {
-            cube([length,key_width,height]);
-            translate([length-keyring_rad*1.5, -extra, height/2])
-                rotate([0, 90, 90])
-                    cylinder(h=key_width+extra*2, r=keyring_rad, $fn=100);
+    
+    $fn=10;
+
+    scale(v=[2.5,2.5,2.5])
+    translate([18,-handlew/2,0])    
+    rotate([-90, -45, 0]) 
+    color("grey") {
+        minkowski() {
+            handle_body();
+            sphere(r=0.1);
+        }
+    }
+    
+}
+
+module handle_body() {
+    $fn=100;
+    
+    difference() {
+        intersection() {    
+            cylinder(handlew, d=10);
+            handle_side();
+            mirror([0,1,0]) mirror([1,0,0]) mirror([1,1,0]) handle_side();
         }
         
-        translate([2.5, 0, height/2])
-            rotate([90, 90, 0])
-                linear_extrude(height=key_width*0.2) text(label, size=2.5, halign="center");
+        rotate([0, 0, -45])
+        translate([0,0.6,-0.01])        
+        intersection() {
+            dd = 7.3;
+            cylinder(handlew+0.02, d=dd);
+            translate([0,6,0]) cylinder(handlew+0.02, d=dd);
+        }
+        
+        cuthandlew = 6;
+        rotate([0,0,45]) translate([-7,-cuthandlew/2,-0.01])  cube([3,cuthandlew,handlew+0.02]); 
     }
 }
 
-module key(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple=true,label="") {
+
+
+module handle_side() {
+    rotate([0,0,23]) translate([-2,12,0])  cylinder(handlew, d=30);
+}
+
+
+
+
+module key(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple=true) {
     if (len(bitting) != 9 && len(bitting) != 11) {
         echo("Warning non-standard bitting length", len=len(bitting));
     }
@@ -264,8 +296,13 @@ module key(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple
         }
     }
     
-    handle(label=label);
+    
+    handle();
+    
+    
+    
+    
 }
 
 // Abloypart3.pdf Figure 11 key drawing
-key([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],tip_cut_all=true,dss_dimples=[11],label="Fig. 11");
+key([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],tip_cut_all=true,dss_dimples=[11]);
