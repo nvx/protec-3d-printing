@@ -1,5 +1,7 @@
 # Parametrically Generated 3D Printable ABLOY Keys
 
+![](https://pub.trosa.io/abloy_openscad.png)
+
 Inspired by [Dave Pedu's 3D printed Kwikset keys](https://hackaday.io/project/27631-3d-printing-real-world-keys) and
 that the patents for the ABLOY PROTEC keys were set to expire in a couple of weeks, this OpenSCAD model generates keys
 for the ABLOY PROTEC line of locks.
