@@ -239,7 +239,7 @@ module handle(label="") {
     }
 }
 
-module protec(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple=true,label="") {
+module key(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple=true,label="") {
     if (len(bitting) != 9 && len(bitting) != 11) {
         echo("Warning non-standard bitting length", len=len(bitting));
     }
@@ -268,4 +268,4 @@ module protec(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dim
 }
 
 // Abloypart3.pdf Figure 11 key drawing
-protec([0,6,1,4,2,3,1,0,5,2,3], tip_cuts=[0],tip_cut_all=true,dss_dimples=[11],label="Fig. 1.1");
+key([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],tip_cut_all=true,dss_dimples=[11],label="Fig. 11");
