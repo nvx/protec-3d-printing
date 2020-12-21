@@ -20,6 +20,21 @@ The easiest way to use this is to create a new `.scad` file that uses the desire
 
 ### Disklock
 
+```scad
+use <disklock.scad>
+
+disclock([0,6,1,4,2,3,1,0,5,2],tip_cuts=[0],label="Sample");
+```
+
+The `tip_cuts` list indicates which sections of the tips should have warding cut out and ranges from 0 to 6.
+Alternative the `tip_cut_all` flag can be set to true to generate a modified tip that should work in most if not all
+locks.
+
+The `dss_dimples` list indicates what positions dimples for the Disc Steering System should be at, normally 9 or 11
+matching how many cuts your key has. These are usually for cam locks and pad locks.
+
+The `dc_dimple` flag controls if the Disc Controller dimple should be cut out. This is usually for door locks.
+
 ### Protec
 
 ```scad
