@@ -1,4 +1,4 @@
-# Parametrically Generated 3D Printable ABLOY PROTEC Keys
+# Parametrically Generated 3D Printable ABLOY Keys
 
 Inspired by [Dave Pedu's 3D printed Kwikset keys](https://hackaday.io/project/27631-3d-printing-real-world-keys) and
 that the patents for the ABLOY PROTEC keys were set to expire in a couple of weeks, this OpenSCAD model generates keys
@@ -16,12 +16,16 @@ if someone manages to with a non-SLA/DLP printer!
 
 ## Usage
 
-The easiest way to use this is to create a new `.scad` file that uses the `protec.scad` library, eg:
+The easiest way to use this is to create a new `.scad` file that uses the desired library.
+
+### Disklock
+
+### Protec
 
 ```scad
 use <protec.scad>
 
-key([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],dss_dimples=[11],dc_dimple=true,label="Fig. 11");
+protec([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],dss_dimples=[11],dc_dimple=true,label="Fig. 11");
 ```
 
 The `tip_cuts` list indicates which sections of the tips should have warding cut out and ranges from 0 to 6.
@@ -33,7 +37,7 @@ matching how many cuts your key has. These are usually for cam locks and pad loc
 
 The `dc_dimple` flag controls if the Disc Controller dimple should be cut out. This is usually for door locks.
 
-## PROTEC 2
+### Protec 2
 
 This library could be adapted for PROTEC 2 fairly easily, although I suspect an appropriately sized  metal ball bearing
 retained with a separately printed plug would be required for best results.

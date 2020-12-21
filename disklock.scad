@@ -48,11 +48,7 @@ module key_shaft() {
         // Critical x dimensions are relative to key tip
         translate([0,-key_width/2,-key_height/2]) {
             intersection() {
-                cube([key_length,key_width,key_height]);
-                
-                // Curve top and bottom of shaft
-                //translate([0, key_width/2, key_width]) rotate([0,90,0])
-                //    cylinder(h=key_length, r=key_width, $fn=100);
+                cube([key_length,key_width,key_height ]);
             }
         }
         
@@ -69,7 +65,7 @@ module key_shaft() {
         // Side slots
         // Uncut slot depth is 0.3, but the warding can go down another 0.55
         side_slot_depth=0.3+0.55;
-        side_slot_height=2.8;
+        side_slot_height=1.2;
         // +y
         translate([(key_length-extra)/2,(extra+key_width-side_slot_depth)/2,0])
             cube(size=[key_length+extra*2,side_slot_depth+extra,side_slot_height],center=true);
@@ -133,7 +129,7 @@ module bit(position, cut) {
             
             if (cut < 6) { // Only cuts 1-5 have edge cuts
                 cut_angle = (cut == 1 || cut == 2 || cut == 4) ? cut_angle_1 : cut_angle_2;
-                
+         
                 // Do bitting edge chamfers
                 leftCut = (cut == 1 || cut == 3 || cut == 4);
                 rightCut = (!leftCut || cut == 4);
@@ -147,13 +143,6 @@ module bit(position, cut) {
             echo("Warning non-standard 0-cut",position=position);
         }
     }
-}
-
-module dss_dimple(discs=9) {
-    x_offset=first_cut_center+(cut_offset*discs)+(cut_width/2);
-    y_offset=(key_width/2)-dimple_depth/2+extra;
-
-    dimple(x_offset,y_offset,key_height/2-1.6);
 }
 
 module dc_dimple() {
@@ -239,8 +228,8 @@ module handle(label="") {
     }
 }
 
-module key(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple=true,label="") {
-    if (len(bitting) != 9 && len(bitting) != 11) {
+module disklock(bitting=[],tip_cuts=[],tip_cut_all=false,label="") {
+    if (len(bitting) != 10) {
         echo("Warning non-standard bitting length", len=len(bitting));
     }
     difference() {
@@ -248,13 +237,10 @@ module key(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple
         for(i=[0:len(bitting)-1]) {
             bit(i, bitting[i]);
         }
-        for(i=[0:len(dss_dimples)-1]) {
-            dss_dimple(dss_dimples[i]);
-        }
-        if (dc_dimple) {
-            dc_dimple();
-        }
         
+        // INn
+        dc_dimple(); 
+       
         if (len(tip_cuts) > 0) {
             tip_warding(tip_cuts);
         }
@@ -268,4 +254,4 @@ module key(bitting=[],tip_cuts=[],tip_cut_all=false,dss_dimples=[9,11],dc_dimple
 }
 
 // Abloypart3.pdf Figure 11 key drawing
-key([0,6,1,4,2,3,1,0,5,2,3],tip_cuts=[0],tip_cut_all=true,dss_dimples=[11],label="Fig. 11");
+disklock([4,6,1,4,2,3,1,3,5,2],tip_cuts=[0],tip_cut_all=true,label="Label 11");
