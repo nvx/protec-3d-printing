@@ -70,8 +70,8 @@ If anyone experiments with this or wants to send me a PROTEC 2 core to play with
 ## References
 
 * [Lockwiki](http://lockwiki.com) LockWiki
- * [Disklock](http://lockwiki.com/index.php/Abloy_Disklock)
- * [Protec](http://lockwiki.com/index.php/Abloy_Protec)
+  * [Disklock](http://lockwiki.com/index.php/Abloy_Disklock)
+  * [Protec](http://lockwiki.com/index.php/Abloy_Protec)
 * [Toool](https://toool.nl/) Evolution of Abloy series
   * [Abloy Classic](https://toool.nl/images/5/58/Abloy.pdf)
   * [Abloy Disklock](https://toool.nl/images/f/f3/Abloypart2.pdf)
