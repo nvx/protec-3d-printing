@@ -24,7 +24,7 @@ The easiest way to use this is to create a new `.scad` file that uses the desire
 
 ### Disklock ®
 
-![Key bitting](http://lockwiki.com/images/4/4e/Abloy_Disklock_key_bitting.jpg)
+<img src="http://lockwiki.com/images/4/4e/Abloy_Disklock_key_bitting.jpg" width="100">
 
 ```scad
 use <disklock.scad>
@@ -43,7 +43,7 @@ The `dc_dimple` flag controls if the Disc Controller dimple should be cut out. T
 
 ### Protec ®
 
-![Key bitting](http://lockwiki.com/images/0/03/Abloy_Protec_key_bitting.jpg)
+<img src="http://lockwiki.com/images/0/03/Abloy_Protec_key_bitting.jpg" width="100">
 
 ```scad
 use <protec.scad>
