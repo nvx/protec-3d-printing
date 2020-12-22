@@ -1,7 +1,8 @@
 # Parametrically Generated 3D Printable ABLOY Keys
 
-![](https://pub.trosa.io/abloy_openscad.png)
-
+<p align="center">
+   <img src="https://pub.trosa.io/abloy_openscad.png"/><br>
+</p>
 Inspired by [Dave Pedu's 3D printed Kwikset keys](https://hackaday.io/project/27631-3d-printing-real-world-keys) and
 that the patents for the ABLOY PROTEC keys were set to expire in a couple of weeks, this OpenSCAD model generates keys
 for the ABLOY PROTEC line of locks.
@@ -20,7 +21,9 @@ if someone manages to with a non-SLA/DLP printer!
 
 The easiest way to use this is to create a new `.scad` file that uses the desired library.
 
-### Disklock
+### Disklock ®
+
+![Key bitting](http://lockwiki.com/images/4/4e/Abloy_Disklock_key_bitting.jpg)
 
 ```scad
 use <disklock.scad>
@@ -37,7 +40,9 @@ matching how many cuts your key has. These are usually for cam locks and pad loc
 
 The `dc_dimple` flag controls if the Disc Controller dimple should be cut out. This is usually for door locks.
 
-### Protec
+### Protec ®
+
+![Key bitting](http://lockwiki.com/images/0/03/Abloy_Protec_key_bitting.jpg)
 
 ```scad
 use <protec.scad>
@@ -54,7 +59,7 @@ matching how many cuts your key has. These are usually for cam locks and pad loc
 
 The `dc_dimple` flag controls if the Disc Controller dimple should be cut out. This is usually for door locks.
 
-### Protec 2
+### Protec 2 ®
 
 This library could be adapted for PROTEC 2 fairly easily, although I suspect an appropriately sized  metal ball bearing
 retained with a separately printed plug would be required for best results.
@@ -63,8 +68,12 @@ If anyone experiments with this or wants to send me a PROTEC 2 core to play with
 
 ## References
 
+* [Lockwiki]
+ * [Disklock](http://lockwiki.com/index.php/Abloy_Disklock)
+ * [Protec](http://lockwiki.com/index.php/Abloy_Protec)
 * [Toool](https://toool.nl/) Evolution of Abloy series
   * [Abloy Classic](https://toool.nl/images/5/58/Abloy.pdf)
   * [Abloy Disklock](https://toool.nl/images/f/f3/Abloypart2.pdf)
   * [Abloy Protec](https://toool.nl/images/8/8a/Abloypart3.pdf)
 * [Abloy Protec Patent US6799447B2](https://patents.google.com/patent/US6799447B2)
+* [ProtecVol Abloy](http://protectvol.online.fr/abloy.html)
