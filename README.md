@@ -29,7 +29,7 @@ The easiest way to use this is to create a new `.scad` file that uses the desire
 ```scad
 use <disklock.scad>
 
-disclock([0,6,1,4,2,3,1,0,5,2],tip_cuts=[0],label="Sample");
+disklock([0,6,1,4,2,3,1,0,5,2],tip_cuts=[0],label="Sample");
 ```
 
 The `tip_cuts` list indicates which sections of the tips should have warding cut out and ranges from 0 to 6.
